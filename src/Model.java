@@ -12,6 +12,11 @@ public class Model extends Observable {
 		
 		
 	}
+	public void reset() {
+		zahl = 0 ;
+		setChanged();
+		notifyObservers();
+	}
 	public int getzahl() {
 		return zahl;
 	}
