@@ -15,9 +15,11 @@ public class ControllerGUI implements Observer, ActionListener {
 
 		model.addObserver(this);
 
-		view.getKnopf().addActionListener(this);
-		view.getText().setText(String.valueOf(model.getzahl()));
-		;
+		view.getKnopf_hochzaehlen().addActionListener(this);
+		view.getText_hochzaehlen().setText(String.valueOf(model.getzahl()));
+		
+		view.getKnopf_reset().addActionListener(this);
+		view.getText_reset().setText(String.valueOf(model.getzahl()));
 
 		view.setVisible(true);
 
@@ -25,10 +27,16 @@ public class ControllerGUI implements Observer, ActionListener {
 
 	@Override
 	public void actionPerformed(ActionEvent arg0) {
-
+		
+        //System.out.println("arg0.getActionCommand() :" + arg0.getActionCommand().toString());
+        
 		switch (arg0.getActionCommand()) {
 		case ViewGUI.HOCHZAEHLEN:
 			model.zaehlen();
+			
+			break;
+		case ViewGUI.RESET:
+			model.reset();
 			
 			break;
 
@@ -44,7 +52,7 @@ public class ControllerGUI implements Observer, ActionListener {
 	public void update(Observable arg0, Object arg1) {
 
 		if (arg0 == model) {
-			view.getText().setText(String.valueOf(model.getzahl()));
+			view.getText_hochzaehlen().setText(String.valueOf(model.getzahl()));
 		}
 
 	}
